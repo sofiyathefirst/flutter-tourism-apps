@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project/screens/booking_screen.dart';
+import 'package:test_project/screens/home_screen.dart';
+import 'package:test_project/screens/login_screen.dart';
+import 'package:test_project/screens/main_screen.dart';
 
 class InformationPage2 extends StatefulWidget {
   final QueryDocumentSnapshot<Object?>? data;
@@ -21,9 +24,22 @@ class _InformationPage2State extends State<InformationPage2> {
         backgroundColor: const Color.fromARGB(255, 192, 243, 245),
         actions: [
           IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                color: Colors.black),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MainScreen()));
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.logout_rounded, color: Colors.black),
             onPressed: () {
               FirebaseAuth.instance.signOut();
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const LoginPage(title: 'Login Page')));
             },
           ),
         ],
@@ -140,7 +156,7 @@ class _InformationPage2State extends State<InformationPage2> {
                       Text(
                         'RM ' +
                             widget.data!.get('price_adults').toString() +
-                            ' per adults',
+                            ' per adult',
                         style: const TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 15,

@@ -3,6 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:test_project/screens/booking_receipts_kayak.dart';
+import 'package:test_project/screens/home_screen.dart';
+import 'package:test_project/screens/login_screen.dart';
+import 'package:test_project/screens/main_screen.dart';
 
 //final selectedCity = StateProvider((ref) => '');
 
@@ -77,15 +80,27 @@ class _BookingPageState extends State<BookingPage> {
     }
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue.shade100,
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 192, 243, 245),
         actions: [
           IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                color: Colors.black),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MainScreen()));
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.logout_rounded, color: Colors.black),
             onPressed: () {
               FirebaseAuth.instance.signOut();
-              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const LoginPage(title: 'Login Page')));
             },
           ),
         ],
@@ -99,7 +114,7 @@ class _BookingPageState extends State<BookingPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              color: Colors.white,
+              color: Colors.blue.shade100,
               width: double.infinity,
               child: Column(
                 children: [
@@ -146,6 +161,7 @@ class _BookingPageState extends State<BookingPage> {
                             ' Name',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: 16,
                             ),
                             textAlign: TextAlign.start,
                           ),
@@ -157,6 +173,10 @@ class _BookingPageState extends State<BookingPage> {
                           controller: name,
                           decoration: InputDecoration(
                             hintText: 'Enter your name',
+                            hintStyle: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                            ),
                             prefixIcon: const Icon(
                               Icons.person,
                               color: Colors.black,
@@ -177,6 +197,7 @@ class _BookingPageState extends State<BookingPage> {
                             ' Phone Number',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: 16,
                             ),
                             textAlign: TextAlign.start,
                           ),
@@ -188,6 +209,10 @@ class _BookingPageState extends State<BookingPage> {
                           controller: pnum,
                           decoration: InputDecoration(
                             hintText: 'Enter your phone number',
+                            hintStyle: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                            ),
                             prefixIcon: const Icon(
                               Icons.phone,
                               color: Colors.black,
@@ -208,6 +233,7 @@ class _BookingPageState extends State<BookingPage> {
                             ' Date',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: 16,
                             ),
                             textAlign: TextAlign.start,
                           ),
@@ -219,6 +245,10 @@ class _BookingPageState extends State<BookingPage> {
                           controller: date,
                           decoration: InputDecoration(
                             hintText: 'Enter your date',
+                            hintStyle: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                            ),
                             prefixIcon: const Icon(
                               Icons.calendar_today_rounded,
                               color: Colors.black,
@@ -264,6 +294,7 @@ class _BookingPageState extends State<BookingPage> {
                             ' Time',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: 16,
                             ),
                             textAlign: TextAlign.start,
                           ),
@@ -272,6 +303,17 @@ class _BookingPageState extends State<BookingPage> {
                           height: 10,
                         ),
                         DropdownButtonFormField(
+                          decoration: InputDecoration(
+                            hintText: 'Choose starting time',
+                            hintStyle: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                            ),
+                            prefixIcon: const Icon(
+                              Icons.timelapse_rounded,
+                              color: Colors.black,
+                            ),
+                          ),
                           items: time.map((times) {
                             return DropdownMenuItem(
                               value: times,
@@ -291,6 +333,7 @@ class _BookingPageState extends State<BookingPage> {
                             ' Number of person',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: 16,
                             ),
                             textAlign: TextAlign.start,
                           ),
@@ -302,6 +345,10 @@ class _BookingPageState extends State<BookingPage> {
                           controller: adults,
                           decoration: InputDecoration(
                             hintText: 'Enter number of adults',
+                            hintStyle: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                            ),
                             prefixIcon: const Icon(
                               Icons.person_add_alt_1_outlined,
                               color: Colors.black,
@@ -314,8 +361,19 @@ class _BookingPageState extends State<BookingPage> {
                           keyboardType: TextInputType.number,
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
+                        SizedBox(height: 20),
+                        Text(
+                          'Please click the Total button to calculate Total Price',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 20),
                         SizedBox(
                           height: 50,
                           child: Text(

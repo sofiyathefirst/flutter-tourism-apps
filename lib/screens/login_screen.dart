@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:test_project/screens/profile_page.dart';
 import 'package:test_project/screens/home_screen.dart';
+import 'package:test_project/screens/main_screen.dart';
 import 'package:test_project/screens/register_screen.dart';
 
 class LoginPage extends StatefulWidget {
@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                                 .then((user) => Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => HomeScreen())))
+                                        builder: (context) => MainScreen())))
                                 .catchError((e) {
                               print(e);
                             });
