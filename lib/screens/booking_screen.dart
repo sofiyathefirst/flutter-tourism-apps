@@ -82,7 +82,6 @@ class _BookingPageState extends State<BookingPage> {
     return Scaffold(
       backgroundColor: Colors.blue.shade100,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 192, 243, 245),
         actions: [
           IconButton(
             icon: const Icon(Icons.arrow_back_ios_new_rounded,
