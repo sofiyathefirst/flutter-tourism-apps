@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:test_project/screens/home_screen.dart';
 import 'package:test_project/screens/main_screen.dart';
 import 'package:test_project/screens/register_screen.dart';
 
@@ -27,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
     TextEditingController _passwordController = TextEditingController();
 
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(60),
@@ -165,9 +164,12 @@ class _LoginPageState extends State<LoginPage> {
                       height: 20,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('Not registered yet?'),
+                        const Text('Not registered yet?',
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold)),
                         TextButton(
                           onPressed: () {
                             Navigator.pushReplacement(
@@ -179,7 +181,9 @@ class _LoginPageState extends State<LoginPage> {
                             );
                           },
                           child: const Text('Create an account',
-                              style: TextStyle(color: Colors.black54)),
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold)),
                         ),
                       ],
                     ),

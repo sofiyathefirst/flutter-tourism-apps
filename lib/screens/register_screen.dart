@@ -33,7 +33,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(40),
@@ -215,7 +215,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('Already registered?'),
+                        const Text('Already registered?',
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold)),
                         TextButton(
                           onPressed: () {
                             const CircularProgressIndicator();
@@ -228,7 +232,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             );
                           },
                           child: const Text('Sign in',
-                              style: TextStyle(color: Colors.black54)),
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold)),
                         ),
                       ],
                     ),

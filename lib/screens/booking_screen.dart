@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:test_project/screens/booking_receipts_kayak.dart';
-import 'package:test_project/screens/home_screen.dart';
 import 'package:test_project/screens/login_screen.dart';
 import 'package:test_project/screens/main_screen.dart';
 
@@ -80,17 +79,17 @@ class _BookingPageState extends State<BookingPage> {
     }
 
     return Scaffold(
-      backgroundColor: Colors.blue.shade100,
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+          icon:
+              const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => MainScreen()));
+          },
+        ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                color: Colors.black),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MainScreen()));
-            },
-          ),
           IconButton(
             icon: const Icon(Icons.logout_rounded, color: Colors.black),
             onPressed: () {
@@ -105,7 +104,7 @@ class _BookingPageState extends State<BookingPage> {
         ],
         title: const Text(
           'Booking Page',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(
@@ -113,7 +112,7 @@ class _BookingPageState extends State<BookingPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              color: Colors.blue.shade100,
+              color: Colors.white,
               width: double.infinity,
               child: Column(
                 children: [

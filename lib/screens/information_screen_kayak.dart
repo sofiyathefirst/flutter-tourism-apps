@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:test_project/screens/booking_screen.dart';
-import 'package:test_project/screens/home_screen.dart';
 import 'package:test_project/screens/login_screen.dart';
 import 'package:test_project/screens/main_screen.dart';
 
@@ -19,18 +17,18 @@ class _InformationPage2State extends State<InformationPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 192, 243, 245),
+        leading: IconButton(
+          icon:
+              const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => MainScreen()));
+          },
+        ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                color: Colors.black),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MainScreen()));
-            },
-          ),
           IconButton(
             icon: const Icon(Icons.logout_rounded, color: Colors.black),
             onPressed: () {
@@ -45,14 +43,14 @@ class _InformationPage2State extends State<InformationPage2> {
         ],
         title: const Text(
           'Details Page',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
-              color: Colors.black,
+              color: Colors.white,
               width: double.infinity,
               child: Column(
                 children: [
@@ -66,7 +64,7 @@ class _InformationPage2State extends State<InformationPage2> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 25,
-                          color: Colors.orangeAccent),
+                          color: Colors.black),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -89,7 +87,7 @@ class _InformationPage2State extends State<InformationPage2> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
-                            color: Colors.orangeAccent),
+                            color: Colors.blue),
                       ),
                     ),
                   ),
@@ -100,10 +98,10 @@ class _InformationPage2State extends State<InformationPage2> {
                       child: Text(
                         widget.data!.get('descriptions'),
                         style: TextStyle(
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.bold,
                             fontStyle: FontStyle.italic,
                             fontSize: 15,
-                            color: Colors.orangeAccent),
+                            color: Colors.black),
                         textAlign: TextAlign.justify,
                       ),
                     ),
@@ -121,8 +119,8 @@ class _InformationPage2State extends State<InformationPage2> {
                         'Location',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.white),
+                            fontSize: 18,
+                            color: Colors.blue),
                       ),
                       SizedBox(
                         width: 60,
@@ -131,8 +129,8 @@ class _InformationPage2State extends State<InformationPage2> {
                         widget.data!.get('city'),
                         style: const TextStyle(
                             fontWeight: FontWeight.w500,
-                            fontSize: 15,
-                            color: Colors.white),
+                            fontSize: 18,
+                            color: Colors.black),
                         textAlign: TextAlign.justify,
                       ),
                     ],
@@ -147,8 +145,8 @@ class _InformationPage2State extends State<InformationPage2> {
                         'Price',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.white),
+                            fontSize: 18,
+                            color: Colors.blue),
                       ),
                       SizedBox(
                         width: 88,
@@ -159,8 +157,8 @@ class _InformationPage2State extends State<InformationPage2> {
                             ' per adult',
                         style: const TextStyle(
                             fontWeight: FontWeight.w500,
-                            fontSize: 15,
-                            color: Colors.white),
+                            fontSize: 18,
+                            color: Colors.black),
                         textAlign: TextAlign.justify,
                       ),
                     ],
@@ -175,8 +173,8 @@ class _InformationPage2State extends State<InformationPage2> {
                         'Duration',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.white),
+                            fontSize: 18,
+                            color: Colors.blue),
                       ),
                       SizedBox(
                         width: 60,
@@ -185,8 +183,8 @@ class _InformationPage2State extends State<InformationPage2> {
                         widget.data!.get('duration').toString() + ' hours',
                         style: const TextStyle(
                             fontWeight: FontWeight.w500,
-                            fontSize: 15,
-                            color: Colors.white),
+                            fontSize: 18,
+                            color: Colors.black),
                         textAlign: TextAlign.justify,
                       ),
                     ],
@@ -203,7 +201,7 @@ class _InformationPage2State extends State<InformationPage2> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
-                            color: Colors.white),
+                            color: Colors.blue),
                       ),
                     ),
                   ),
@@ -214,10 +212,10 @@ class _InformationPage2State extends State<InformationPage2> {
                       child: Text(
                         widget.data!.get('itenary'),
                         style: TextStyle(
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.bold,
                             fontStyle: FontStyle.italic,
                             fontSize: 15,
-                            color: Colors.white),
+                            color: Colors.black),
                         textAlign: TextAlign.justify,
                       ),
                     ),
@@ -234,7 +232,7 @@ class _InformationPage2State extends State<InformationPage2> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
-                            color: Colors.white),
+                            color: Colors.blue),
                       ),
                     ),
                   ),
@@ -245,10 +243,10 @@ class _InformationPage2State extends State<InformationPage2> {
                       child: Text(
                         widget.data!.get('inclusions'),
                         style: TextStyle(
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.bold,
                             fontStyle: FontStyle.italic,
                             fontSize: 15,
-                            color: Colors.white),
+                            color: Colors.black),
                         textAlign: TextAlign.justify,
                       ),
                     ),
@@ -265,7 +263,7 @@ class _InformationPage2State extends State<InformationPage2> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
-                            color: Colors.white),
+                            color: Colors.blue),
                       ),
                     ),
                   ),
@@ -276,10 +274,10 @@ class _InformationPage2State extends State<InformationPage2> {
                       child: Text(
                         widget.data!.get('add_info'),
                         style: TextStyle(
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.bold,
                             fontStyle: FontStyle.italic,
                             fontSize: 15,
-                            color: Colors.white),
+                            color: Colors.black),
                         textAlign: TextAlign.justify,
                       ),
                     ),

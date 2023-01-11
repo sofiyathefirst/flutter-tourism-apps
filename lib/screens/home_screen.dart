@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:test_project/screens/booking_receipts_kayak.dart';
 import 'package:test_project/screens/booking_screen.dart';
 import 'package:test_project/screens/information_screen_kayak.dart';
 import 'package:test_project/screens/login_screen.dart';
@@ -21,20 +20,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 192, 243, 245),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                color: Colors.black),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+            },
+          ),
           actions: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                  color: Colors.black),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const HomeScreen()));
-              },
-            ),
             IconButton(
               icon: const Icon(Icons.logout_rounded, color: Colors.black),
               onPressed: () {
@@ -49,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
           title: const Text(
             'Home Screen',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
         ),
         body: SingleChildScrollView(
@@ -81,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Row(
                               children: [
                                 SizedBox(
-                                  width: 20,
+                                  width: 10,
                                 ),
                                 SizedBox(
                                   height: 180,
@@ -90,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     image: NetworkImage(trip.get('image')),
                                   ),
                                 ),
-                                SizedBox(width: 20),
+                                SizedBox(width: 10),
                                 Column(
                                   // ignore: sort_child_properties_last
                                   children: [
@@ -99,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       trip.get('name'),
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 15,
+                                        fontSize: 12,
                                       ),
                                     ),
                                     SizedBox(height: 20),
@@ -116,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Text(
                                       '*Children are not allowed',
                                       style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.red,
                                       ),
